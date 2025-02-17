@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1B62113A2D635EDB004159EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 1B6211392D635EDB004159EC /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1BCE072E2D60FF2400067ED7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B6211392D635EDB004159EC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1BCE07172D60FF2300067ED7 /* Apple Pie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Pie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BCE072D2D60FF2400067ED7 /* Apple PieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Apple PieTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BCE07372D60FF2400067ED7 /* Apple PieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Apple PieUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,6 +96,7 @@
 				1BCE07192D60FF2300067ED7 /* Apple Pie */,
 				1BCE07302D60FF2400067ED7 /* Apple PieTests */,
 				1BCE073A2D60FF2400067ED7 /* Apple PieUITests */,
+				1B6211392D635EDB004159EC /* README.md */,
 				1BCE07182D60FF2300067ED7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -225,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B62113A2D635EDB004159EC /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
