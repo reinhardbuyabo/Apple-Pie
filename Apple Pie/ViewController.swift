@@ -17,8 +17,16 @@ class ViewController: UIViewController {
     var currentGame: Game! // between app launch and beginning of first round, this variable of type `Game` is nil
     
     // Count of the Number of Wins and Losses
-    var totalWins = 0
-    var totalLosses = 0
+    var totalWins = 0 {
+        didSet {
+            newRound()
+        }
+    }
+    var totalLosses = 0 {
+        didSet {
+            newRound()
+        }
+    }
     
     @IBOutlet weak var treeImageView: UIImageView!
     
@@ -42,17 +50,27 @@ class ViewController: UIViewController {
         let letterString = sender.configuration!.title! // all buttons have configurations that have titles
         let letter = Character(letterString.lowercased()) // lowercase then convert Str -> Char
         currentGame.playerGuessed(letter: letter)
+        
+        updateGameState()
     }
     
     func newRound(){
         // Each round begins with the selection of a new word
         // Reset the number of moves the player can make to `incorrectMovesAllowed`
         
-        let newWord = listOfWords.removeFirst()
-        // Instance of Game
-        currentGame = Game(word: newWord, incorrectMovesRemaining: incorrecctMovesAllowed, guessedLetters: []) // initially guessedLetters is an empty Collection
+        if !listOfWords.isEmpty {
+            let newWord = listOfWords.removeFirst()
+            currentGame = Game(
+                word: newWord,
+                incorrectMovesRemaining: incorrecctMovesAllowed,
+                guessedLetters: []
+            )
+            enableLetterButtons(true)
+            updateUI()
+        } else {
+            enableLetterButtons(false)
+        }
         
-        updateUI()
     }
     
     func updateUI(){
@@ -71,5 +89,23 @@ class ViewController: UIViewController {
         scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses)"
         // 2. Image View
         treeImageView.image = UIImage(named: "Tree \(currentGame.incorrectMovesRemaining)")
+    }
+    
+    func updateGameState() {
+        // A Game is lost if `incorrectMovesRemaining` reaches 0
+        // When it does increment `totalLosses`
+        if currentGame.incorrectMovesRemaining == 0 {
+            totalLosses += 1
+        } else if currentGame.word == currentGame.formattedWord {
+            totalWins += 1
+        } else {
+            updateUI()
+        }
+    }
+    
+    func enableLetterButtons(_ enable: Bool) {
+        for button in letterButtons {
+            button.isEnabled = enable
+        }
     }
 }
