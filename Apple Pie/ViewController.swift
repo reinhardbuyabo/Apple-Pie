@@ -58,7 +58,16 @@ class ViewController: UIViewController {
     func updateUI(){
         // handles interface updates
         
-        // 1. Score Label
+        // 4. Spacing of the guess
+        var letters = [String]() // constructor call
+        for letter in currentGame.formattedWord {
+            letters.append(String(letter))
+        }
+        
+        let wordWithSpacing = letters.joined(separator: " ") // space as separator
+        
+        // 3. `formattedWord` is a now a property that we can display in UI
+        correctWordLabel.text = wordWithSpacing
         scoreLabel.text = "Wins: \(totalWins), Losses: \(totalLosses)"
         // 2. Image View
         treeImageView.image = UIImage(named: "Tree \(currentGame.incorrectMovesRemaining)")

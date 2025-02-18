@@ -16,6 +16,25 @@ struct Game {
     // Collection of characters that keep track of the selected letters
     var guessedLetters: [Character]
     
+    // Computed Property
+    // - Begin with an empty string
+    // - Loop through each characger of `word`
+    // - If the character is in `guessedLetters`, convert it to a string, then append the letter onto the variable
+    // - Otherwise, append _ onto the variable
+    var formattedWord: String {
+        var guessedWord = ""
+        for letter in word {
+            
+            if guessedLetters.contains(letter) {
+                guessedWord += "\(letter)"
+            } else {
+                guessedWord += "_"
+            }
+        }
+        
+        return guessedWord
+    }
+    
     // Method that receives a `Character`, adds it to the collection, an updates `incorrectMovesRemaining` if necessary
     mutating func playerGuessed(letter: Character) {
         guessedLetters.append(letter)
