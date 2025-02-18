@@ -38,6 +38,10 @@ class ViewController: UIViewController {
 
     @IBAction func letterButtonPressed(_ sender: UIButton) {
         sender.isEnabled = false
+        // Not all buttons have configurations or titles
+        let letterString = sender.configuration!.title! // all buttons have configurations that have titles
+        let letter = Character(letterString.lowercased()) // lowercase then convert Str -> Char
+        currentGame.playerGuessed(letter: letter)
     }
     
     func newRound(){
@@ -46,7 +50,7 @@ class ViewController: UIViewController {
         
         let newWord = listOfWords.removeFirst()
         // Instance of Game
-        currentGame = Game(word: newWord, incorrectMovesRemaining: incorrecctMovesAllowed)
+        currentGame = Game(word: newWord, incorrectMovesRemaining: incorrecctMovesAllowed, guessedLetters: []) // initially guessedLetters is an empty Collection
         
         updateUI()
     }
